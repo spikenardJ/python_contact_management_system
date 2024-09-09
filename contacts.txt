@@ -12,15 +12,16 @@ Lady Jane
   Last Name: Jane
   Phone Number: 1-333-333-3333
   Email: lady@jane.com
-  Category: Family
+  Category: Work
   Birthday: 03-03-2024
   Notes: Ghi
 
-Frank Zed
-  First Name: Frank
+Chris Zed
+  First Name: Chris
   Last Name: Zed
   Phone Number: 1-222-222-2222
-  Email: frank@zed.com
-  Category: Work
+  Email: chris@zed.com
+  Category: Friend
   Birthday: 02-02-2024
   Notes: Def
+

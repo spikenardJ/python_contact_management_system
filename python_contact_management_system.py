@@ -85,70 +85,76 @@ def search_for_contact():
     try:
         global contacts
         while True:
-            for i in contacts:
-                print(colored("\nSearch for Contact By:", "white", attrs=["bold"]))
-                print(colored("1.", "light_blue", attrs=["bold"]), end=" ")
-                print(colored("First and Last Name", "grey"))
-                print(colored("2.", "light_blue", attrs=["bold"]), end=" ")
-                print(colored("Phone Number", "grey"))
-                print(colored("3.", "light_blue", attrs=["bold"]), end=" ")
-                print(colored("Email", "grey"))
-                print(colored("4.", "light_blue", attrs=["bold"]), end=" ")
-                print(colored("Category", "grey"))
-                print(colored("5.", "light_blue", attrs=["bold"]), end=" ")
-                print(colored("Notes", "grey"))
-                print(colored("6.", "light_blue", attrs=["bold"]), end=" ")
-                print(colored("Exit", "grey"))
-                choice = input("Enter your choice: ")
+            print(colored("\nSearch for Contact By:", "white", attrs=["bold"]))
+            print(colored("1.", "light_blue", attrs=["bold"]), end=" ")
+            print(colored("First and Last Name", "grey"))
+            print(colored("2.", "light_blue", attrs=["bold"]), end=" ")
+            print(colored("Phone Number", "grey"))
+            print(colored("3.", "light_blue", attrs=["bold"]), end=" ")
+            print(colored("Email", "grey"))
+            print(colored("4.", "light_blue", attrs=["bold"]), end=" ")
+            print(colored("Category", "grey"))
+            print(colored("5.", "light_blue", attrs=["bold"]), end=" ")
+            print(colored("Notes", "grey"))
+            print(colored("6.", "light_blue", attrs=["bold"]), end=" ")
+            print(colored("Exit", "grey"))
+            choice = input("Enter your choice: ")
 
-                if choice == "1":
-                    contact = input("Enter the first and last name of the contact you are searching for: ").title()
-                    if contact in contacts:
+            if choice == "1":
+                contact = input("Enter the first and last name of the contact you are searching for: ").title()
+                i = contact.split()
+                c = tuple(i)
+                print(colored(f"\nContact: {contact}", "light_blue", attrs=["bold"]))
+                print(" ")
+                print(contacts[c])
+            elif choice == "2":
+                number = input("Enter the phone number of the contact you are searching for: ")
+                appears = False
+                for contact in contacts:
+                    if contacts[contact]["Phone Number"] == number:
                         print(colored(f"\nContact: {contact}", "light_blue", attrs=["bold"]))
                         print(" ")
                         print(contacts[contact])
-                    else:
-                        print("Contact was not found. Please try again.")
-                elif choice == "2":
-                    number = input("Enter the phone number of the contact you are searching for: ")
-                    for contact in contacts:
-                        if contact["Phone Number"] == number:
-                            print(colored(f"\nContact: {contact}", "light_blue", attrs=["bold"]))
-                            print(" ")
-                            print(contacts[contact])
-                        else:
-                            print("Contact was not found. Please try again.")
-                elif choice == "3":
-                    email1 = input("Enter the email of the contact you are searching for: ")
-                    for contact in contacts:
-                        if contact["Email"] == email1:
-                            print(colored(f"\nContact: {contact}", "light_blue", attrs=["bold"]))
-                            print(" ")
-                            print(contacts[contact])
-                        else:
-                            print("Contact was not found. Please try again.")
-                elif choice == "4":
-                    category1 = input("Enter the category or categories of the contact you are searching for(Family - Friend - Work): ").title()
-                    for contact in contacts:
-                        if contact["Category"] == category1:
-                            print(colored(f"\nContact: {contact}", "light_blue", attrs=["bold"]))
-                            print(" ")
-                            print(contacts[contact])
-                        else:
-                            print("Contact was not found. Please try again.")
-                elif choice == "5":
-                    notes = input("Enter the notes of the contact you are searching for: ").title()
-                    for contact in contacts:
-                        if contact["Notes"] == notes:
-                            print(colored(f"\nContact: {contact}", "light_blue", attrs=["bold"]))
-                            print(" ")
-                            print(contacts[contact])
-                        else:
-                            print("Contact was not found. Please try again.")
-                elif choice == "6":
-                    main()
-                else:
-                    print("Invalid choice. Please try again.")
+                        appears = True
+                if not appears:
+                    print("Contact not found.")
+            elif choice == "3":
+                email1 = input("Enter the email of the contact you are searching for: ")
+                appears = False
+                for contact in contacts:
+                    if contacts[contact]["Email"] == email1:
+                        print(colored(f"\nContact: {contact}", "light_blue", attrs=["bold"]))
+                        print(" ")
+                        print(contacts[contact])
+                        appears = True
+                if not appears:
+                    print("Contact not found.")
+            elif choice == "4":
+                category1 = input("Enter the category or categories of the contact you are searching for(Family - Friend - Work): ").title()
+                appears = False
+                for contact in contacts:
+                    if contacts[contact]["Category"] == category1:
+                        print(colored(f"\nContact: {contact}", "light_blue", attrs=["bold"]))
+                        print(" ")
+                        print(contacts[contact])
+                        appears = True
+                if not appears:
+                    print("Contact not found.")
+            elif choice == "5":
+                notes = input("Enter the notes of the contact you are searching for: ").title()
+                appears = False
+                for contact in contacts:
+                    if contacts[contact]["Notes"] == notes:
+                        print(colored(f"\nContact: {contact}", "light_blue", attrs=["bold"]))
+                        print(" ")
+                        print(contacts[contact])
+                        appears = True
+                if not appears:
+                    print("Contact not found.")
+            elif choice == "6":
+                main()
+            else:
+                print("Invalid choice. Please try again.")
     except ValueError:
         print("Please use only numbers in this format for phone number: 1-###-###-####")
     except Exception as e:
@@ -202,17 +208,17 @@ def import_contacts(contacts):
 
 def backup_or_restore_contacts(contacts):
     while True:
-        for i in contacts:
-            print(colored("\nBackup or Restore Contacts:", "white", attrs=["bold"]))
-            print(colored("1.", "light_blue", attrs=["bold"]), end=" ")
-            print(colored("Backup Contacts", "grey"))
-            print(colored("2.", "light_blue", attrs=["bold"]), end=" ")
-            print(colored("Restore Contacts", "grey"))
-            print(colored("3.", "light_blue", attrs=["bold"]), end=" ")
-            print(colored("Exit", "grey"))
-            choice = input("Enter your choice: ")
+        print(colored("\nBackup or Restore Contacts:", "white", attrs=["bold"]))
+        print(colored("1.", "light_blue", attrs=["bold"]), end=" ")
+        print(colored("Backup Contacts", "grey"))
+        print(colored("2.", "light_blue", attrs=["bold"]), end=" ")
+        print(colored("Restore Contacts", "grey"))
+        print(colored("3.", "light_blue", attrs=["bold"]), end=" ")
+        print(colored("Exit", "grey"))
+        choice = input("Enter your choice: ")
 
-            if choice == "1":
+        if choice == "1":
+            if contacts != {}:
                 with open("backup.txt", "a") as f:
                     for key, nested in contacts.items():
                         print(key, file=f)
@@ -220,9 +226,12 @@ def backup_or_restore_contacts(contacts):
                             print("  {}: {}".format(subkey, value), file=f)
                         print(file=f)
                 print("Successfully backed up contacts to backup file.")
-            elif choice == "2":
-                with open("backup.txt", "r") as f:
-                    current_name = None
+            else:
+                print("The contact list is empty.")
+        elif choice == "2":
+            with open("backup.txt", "r") as f:
+                current_name = None
+                if f:
                     for line in f:
                         line = line.strip()
                         if not line:
@@ -234,15 +243,14 @@ def backup_or_restore_contacts(contacts):
                         else:
                             key, value = line.split(": ")
                             contacts[current_name][key] = value
-                print(contacts)
-                print("Successfully restored contacts from backup file.")
-            elif choice == "3":
-                main()
-            else:
-                print("Invalid choice. Please try again.")
-        if not contacts:
-            print("The contact list is empty.")
+                    print(contacts)
+                    print("Successfully restored contacts from backup file.")
+                else:
+                    print("Empty txt file.")
+        elif choice == "3":
             main()
+        else:
+            print("Invalid choice. Please try again.")
 
 def main():
     while True:
