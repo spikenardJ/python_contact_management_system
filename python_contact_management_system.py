@@ -106,51 +106,45 @@ def search_for_contact():
                     if contact in contacts:
                         print(colored(f"\nContact: {contact}", "light_blue", attrs=["bold"]))
                         print(" ")
-                        for key, value in contacts[contact].items():
-                            print(colored(key+":", attrs=["bold"]))
-                            print(colored(value, "grey"))
-                            print(" ")
+                        print(contacts[contact])
                     else:
                         print("Contact was not found. Please try again.")
                 elif choice == "2":
                     number = input("Enter the phone number of the contact you are searching for: ")
                     for contact in contacts:
-                        print(contact)
                         if contact["Phone Number"] == number:
+                            print(colored(f"\nContact: {contact}", "light_blue", attrs=["bold"]))
+                            print(" ")
                             print(contacts[contact])
+                        else:
+                            print("Contact was not found. Please try again.")
                 elif choice == "3":
-                    contacts[i]["Email"] = input("Enter the email of the contact you are searching for: ")
-                    if i in contacts:
-                        print(colored(f"\nPhone Number: {i}", "light_blue", attrs=["bold"]))
-                        print(" ")                    
-                        for key, value in contacts[i].items():
-                            print(colored(key+":", attrs=["bold"]))
-                            print(colored(value, "grey"))
+                    email1 = input("Enter the email of the contact you are searching for: ")
+                    for contact in contacts:
+                        if contact["Email"] == email1:
+                            print(colored(f"\nContact: {contact}", "light_blue", attrs=["bold"]))
                             print(" ")
-                    else:
-                        print("Contact was not found. Please try again.")
+                            print(contacts[contact])
+                        else:
+                            print("Contact was not found. Please try again.")
                 elif choice == "4":
-                    contacts[i][f"Category"] = input("Enter the category or categories of the contact you are searching for(Family - Friend - Work): ").title()
-                    if i in contacts:
-                        print(colored(f"\nPhone Number: {i}", "light_blue", attrs=["bold"]))
-                        print(" ")
-                        for key, value in contacts[i].items():
-                            print(colored(key+":", attrs=["bold"]))
-                            print(colored(value, "grey"))
+                    category1 = input("Enter the category or categories of the contact you are searching for(Family - Friend - Work): ").title()
+                    for contact in contacts:
+                        if contact["Category"] == category1:
+                            print(colored(f"\nContact: {contact}", "light_blue", attrs=["bold"]))
                             print(" ")
-                    else:
-                        print("Contact was not found. Please try again.")
+                            print(contacts[contact])
+                        else:
+                            print("Contact was not found. Please try again.")
                 elif choice == "5":
-                    contacts[i][f"Notes"] = input("Enter the notes of the contact you are searching for: ").title()
-                    if i in contacts:
-                        print(colored(f"\nPhone Number: {i}", "light_blue", attrs=["bold"]))
-                        print(" ")
-                        for key, value in contacts[i].items():
-                            print(colored(key+":", attrs=["bold"]))
-                            print(colored(value, "grey"))
+                    notes = input("Enter the notes of the contact you are searching for: ").title()
+                    for contact in contacts:
+                        if contact["Notes"] == notes:
+                            print(colored(f"\nContact: {contact}", "light_blue", attrs=["bold"]))
                             print(" ")
-                    else:
-                        print("Contact was not found. Please try again.")
+                            print(contacts[contact])
+                        else:
+                            print("Contact was not found. Please try again.")
                 elif choice == "6":
                     main()
                 else:
@@ -264,7 +258,7 @@ def main():
         print(colored("4.", "light_blue", attrs=["bold"]), end=" ")
         print(colored("Search for a Contact", "grey"))
         print(colored("5.", "light_blue", attrs=["bold"]), end=" ")
-        print(colored("Display All Contactst", "grey"))
+        print(colored("Display All Contacts", "grey"))
         print(colored("6.", "light_blue", attrs=["bold"]), end=" ")
         print(colored("Export Contacts to a Text File", "grey"))
         print(colored("7.", "light_blue", attrs=["bold"]), end=" ")
