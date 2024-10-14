@@ -10,4 +10,5 @@ Menu:
 7. Import Contacts from a Text File
 8. Backup or Restore Contacts
 9. Quit
+
 How to use: Go to https://github.com/spikenardJ/python_contact_management_system.git and download the raw file in the upper right corner of the code. After downloading, go to your V.S. Code and upload it there. Once you have it on V.S. Code you can enjoy the app as well as edit if you like and then show your suggestions as comments on here! Thank you for using the Python Contact Management System!😊
